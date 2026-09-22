@@ -1,0 +1,331 @@
+.janela-musica {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 150;
+  width: min(92vw, 470px);
+  max-height: 90vh;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  color: #fff;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(45, 29, 48, 0.98),
+      rgba(18, 19, 24, 0.98)
+    );
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(25px);
+}
+
+.janela-musica .barra-janela {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  padding-left: 14px;
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(30, 30, 35, 0.96);
+  font-size: 13px;
+}
+
+.janela-musica .controles-janela {
+  display: flex;
+  height: 100%;
+  margin-left: auto;
+}
+
+.janela-musica .controles-janela button {
+  width: 46px;
+  height: 100%;
+  border: 0;
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+}
+
+.janela-musica .controles-janela button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.janela-musica
+  .controles-janela
+  .fechar-janela:hover {
+  background: #c42b1c;
+}
+
+.conteudo-musica {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-height: calc(90vh - 42px);
+  overflow-y: auto;
+  padding: 30px 34px 28px;
+  text-align: center;
+}
+
+.capa-musica {
+  position: relative;
+  display: grid;
+  width: min(62vw, 230px);
+  overflow: hidden;
+  border-radius: 12px;
+  background:
+    linear-gradient(
+      145deg,
+      #583f60,
+      #17181d
+    );
+  box-shadow:
+    0 22px 45px rgba(0, 0, 0, 0.48),
+    0 0 35px rgba(177, 103, 185, 0.18);
+  place-items: center;
+  aspect-ratio: 1;
+}
+
+.capa-musica img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.capa-musica > svg {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 112px;
+}
+
+.capa-tocando > svg {
+  animation: girar-disco 8s infinite linear;
+}
+
+.brilho-capa {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      125deg,
+      rgba(255, 255, 255, 0.18),
+      transparent 32%,
+      transparent 70%,
+      rgba(255, 255, 255, 0.06)
+    );
+}
+
+.informacoes-musica {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.tocando-agora {
+  display: block;
+  margin-bottom: 8px;
+  color: #d6a8db;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.informacoes-musica h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.artista-musica {
+  margin: 6px 0 0;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 14px;
+}
+
+.mensagem-musica {
+  max-width: 350px;
+  margin: 17px auto 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.erro-player {
+  margin: 18px 0 0;
+  color: #ff9c9c;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.progresso-musica {
+  width: 100%;
+  margin-top: 23px;
+}
+
+.progresso-musica input {
+  width: 100%;
+  height: 4px;
+  accent-color: #c57dca;
+  cursor: pointer;
+}
+
+.tempos-musica {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 11px;
+}
+
+.controles-musica {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 62px;
+  margin-top: 8px;
+}
+
+.botao-play-musica {
+  display: grid;
+  width: 56px;
+  height: 56px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  color: #171419;
+  background: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  place-items: center;
+}
+
+.botao-play-musica:hover {
+  background: #f1dff3;
+  transform: scale(1.05);
+}
+
+.botao-play-musica:active {
+  transform: scale(0.97);
+}
+
+.botao-play-musica svg {
+  font-size: 18px;
+}
+
+.botao-play-musica svg:first-child {
+  margin-left: 2px;
+}
+
+.botao-play-musica:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.controle-volume {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  width: 105px;
+  color: rgba(255, 255, 255, 0.66);
+  gap: 8px;
+}
+
+.controle-volume svg {
+  flex: 0 0 auto;
+  font-size: 14px;
+}
+
+.controle-volume input {
+  min-width: 0;
+  width: 100%;
+  accent-color: #c57dca;
+  cursor: pointer;
+}
+
+.icone-disco-enigma {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  color: #e4b4e8;
+  background:
+    radial-gradient(
+      circle,
+      #19191d 0 10%,
+      #5c405f 11% 20%,
+      #24242a 21% 100%
+    );
+  box-shadow:
+    0 0 30px rgba(198, 120, 205, 0.25);
+  place-items: center;
+}
+
+.icone-disco-enigma svg {
+  font-size: 58px;
+}
+
+.entrada-musica {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.52);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.entrada-musica:focus-within {
+  border-color: #c57dca;
+  box-shadow:
+    0 0 0 2px rgba(197, 125, 202, 0.2);
+}
+
+.entrada-musica > svg {
+  flex: 0 0 auto;
+  margin-left: 14px;
+}
+
+.entrada-musica input {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.entrada-musica input:focus {
+  border: 0;
+  box-shadow: none;
+}
+
+@keyframes girar-disco {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 560px) {
+  .conteudo-musica {
+    padding: 24px 20px;
+  }
+
+  .controle-volume {
+    position: static;
+    width: 90px;
+    margin-left: 24px;
+  }
+
+  .controles-musica {
+    justify-content: center;
+  }
+
+  .informacoes-musica h2 {
+    font-size: 23px;
+  }
+}

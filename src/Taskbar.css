@@ -1,0 +1,168 @@
+.barra-tarefas {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 13px;
+  color: white;
+  background: rgba(10, 10, 10, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.aplicativos-tarefa,
+.area-sistema {
+  display: flex;
+  align-items: center;
+}
+
+.aplicativos-tarefa {
+  gap: 4px;
+}
+
+.icone-tarefa {
+  position: relative;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  background: transparent;
+  font-size: 24px;
+  cursor: default;
+  place-items: center;
+  transition: background 120ms ease;
+}
+
+.icone-tarefa:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.icone-tarefa:active {
+  transform: scale(0.92);
+}
+
+.windows {
+  color: #20a6f2;
+}
+
+.chrome {
+  color: #f5c242;
+}
+
+.explorador-icone {
+  color: #ffd34e;
+  font-size: 28px;
+}
+
+.spotify {
+  color: #1ed760;
+}
+
+.discord {
+  color: #7289da;
+}
+
+.vscode {
+  color: #23a8f2;
+}
+
+.notificacao-discord {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(30, 30, 30, 0.9);
+  border-radius: 50%;
+  color: white;
+  background: #e74856;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  place-items: center;
+}
+
+.area-sistema {
+  height: 100%;
+  gap: 11px;
+  font-size: 15px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.relogio-desktop {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 72px;
+  height: 100%;
+  padding: 0 5px;
+  color: white;
+  background: transparent;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 11px;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.area-sistema > svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 650px) {
+  .barra-tarefas {
+    height: 44px;
+    padding: 0 7px;
+  }
+
+  .icone-tarefa {
+    width: 32px;
+    height: 34px;
+    font-size: 20px;
+  }
+
+  .aplicativos-tarefa {
+    gap: 1px;
+  }
+
+  .area-sistema {
+    gap: 7px;
+  }
+
+  .area-sistema > svg:nth-child(2),
+  .area-sistema > svg:nth-child(3) {
+    display: none;
+  }
+}
+.barra-tarefas .relogio-desktop {
+  position: static;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: auto;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  width: 78px;
+  min-width: 78px;
+  height: 48px;
+  margin: 0;
+  padding: 0 4px;
+  color: white;
+  background: transparent;
+  font-size: 11px;
+  line-height: 1.35;
+  white-space: nowrap;
+  text-align: right;
+}

@@ -1,0 +1,586 @@
+* {
+  box-sizing: border-box;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.tela,
+.desktop {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+}
+
+.fundo,
+.desktop {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.fundo {
+  position: absolute;
+  inset: 0;
+  background-color: #111318;
+  background-image: url("/assets/bloqueio.jpg");
+  background-size: cover;
+}
+
+.desktop {
+  background-color: #111318;
+  background-image: url("/assets/desktop.png");
+  background-size: contain;
+}
+
+.tela-bloqueio {
+  cursor: default;
+}
+
+.tela-bloqueio::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.48),
+    transparent 42%
+  );
+}
+
+.relogio {
+  position: absolute;
+  top: 9%;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  transform: translateX(-50%);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.relogio strong {
+  font-size: clamp(5rem, 8vw, 8rem);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.relogio span {
+  margin-top: 0.8rem;
+  font-size: 1.35rem;
+  text-transform: capitalize;
+}
+
+.instrucao {
+  position: absolute;
+  right: 0;
+  bottom: 2rem;
+  left: 0;
+  z-index: 2;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.sistema {
+  display: grid;
+  place-items: center;
+}
+
+.fundo-login {
+  filter: blur(18px) brightness(0.55);
+  transform: scale(1.04);
+}
+
+.login,
+.carregando {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: min(90%, 24rem);
+  text-align: center;
+}
+
+.perfil {
+  display: block;
+  width: 7.5rem;
+  height: 7.5rem;
+  border: 3px solid rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+  object-fit: cover;
+  background: rgba(25, 25, 25, 0.6);
+  box-shadow: 0 5px 24px rgba(0, 0, 0, 0.25);
+}
+
+.login h1 {
+  margin: 1.2rem 0 1.8rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+}
+
+.login form {
+  width: 100%;
+}
+
+.campo-senha {
+  display: flex;
+  width: 100%;
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.campo-senha:focus-within {
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
+.campo-senha input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  outline: 0;
+  padding: 0.75rem 0.85rem;
+  color: #161616;
+  background: transparent;
+}
+
+.campo-senha button {
+  width: 3rem;
+  border: 0;
+  color: white;
+  background: #4a4a4a;
+  cursor: pointer;
+}
+
+.mensagem-erro {
+  margin: 0.9rem 0 0;
+  font-size: 0.9rem;
+}
+
+.dica {
+  margin: 0.55rem 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.85rem;
+}
+
+.carregando p {
+  margin: 1.3rem 0;
+  font-size: 1.15rem;
+}
+
+.pontos {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.pontos span {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: white;
+  animation: carregar 1.2s infinite ease-in-out;
+}
+
+.pontos span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.pontos span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.pontos span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.pontos span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.desktop-aviso {
+  position: absolute;
+  top: 1.2rem;
+  left: 50%;
+  padding: 0.7rem 1rem;
+  border-radius: 0.45rem;
+  color: #222;
+  background: rgba(255, 255, 255, 0.92);
+  font-size: 0.85rem;
+  transform: translateX(-50%);
+  animation: esconder-aviso 4s forwards;
+}
+
+.relogio-desktop {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  width: 92px;
+  height: 48px;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+  padding-right: 12px;
+  color: #1d1d1d;
+  background: rgba(242, 244, 247, 0.78);
+  font-size: 12px;
+  line-height: 1.35;
+  backdrop-filter: blur(18px);
+}
+
+@keyframes carregar {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes esconder-aviso {
+  0%,
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.desktop-shell {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  place-items: center;
+  background: #111318;
+}
+
+.desktop-shell .desktop {
+  width: min(100vw, calc(100vh * 16 / 9));
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background-size: 100% 100%;
+}
+
+.atalho-desktop {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  cursor: default;
+}
+
+.atalho-desktop:hover,
+.atalho-desktop:focus {
+  border-color: rgba(255, 255, 255, 0.45);
+  outline: 0;
+  background: rgba(120, 180, 255, 0.22);
+}
+
+.atalho-meu-amor {
+  top: 35.5%;
+  left: 78.5%;
+  width: 5.2%;
+  height: 10%;
+}
+
+.explorador {
+  position: absolute;
+  top: 10%;
+  left: 17%;
+  z-index: 10;
+  display: flex;
+  width: 66%;
+  height: 70%;
+  overflow: hidden;
+  border: 1px solid #b9b9b9;
+  border-radius: 8px;
+  flex-direction: column;
+  color: #202020;
+  background: #ffffff;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.38);
+}
+
+.explorador-topo {
+  display: flex;
+  height: 42px;
+  align-items: center;
+  justify-content: space-between;
+  background: #f4f4f4;
+  user-select: none;
+}
+
+.explorador-titulo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-left: 14px;
+  font-size: 13px;
+}
+
+.icone-pasta-pequeno,
+.icone-pasta {
+  position: relative;
+  display: block;
+  background: #f5c242;
+}
+
+.icone-pasta-pequeno {
+  width: 18px;
+  height: 14px;
+  border-radius: 2px;
+}
+
+.icone-pasta {
+  width: 52px;
+  height: 39px;
+  border-radius: 3px;
+  box-shadow: inset 0 -5px rgba(211, 145, 22, 0.2);
+}
+
+.icone-pasta-pequeno::before,
+.icone-pasta::before {
+  position: absolute;
+  top: -5px;
+  left: 3px;
+  width: 45%;
+  height: 7px;
+  border-radius: 3px 3px 0 0;
+  content: "";
+  background: #e6ad28;
+}
+
+.controles-janela {
+  display: flex;
+  height: 100%;
+}
+
+.controles-janela button {
+  width: 48px;
+  border: 0;
+  color: #222;
+  background: transparent;
+  cursor: default;
+}
+
+.controles-janela button:hover {
+  background: #dddddd;
+}
+
+.controles-janela .fechar:hover {
+  color: white;
+  background: #c42b1c;
+}
+
+.barra-navegacao {
+  display: flex;
+  height: 48px;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #dddddd;
+  background: #fafafa;
+}
+
+.barra-navegacao > button {
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.barra-navegacao > button:hover {
+  background: #e8e8e8;
+}
+
+.endereco {
+  display: flex;
+  min-width: 0;
+  height: 32px;
+  align-items: center;
+  flex: 1;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid #d2d2d2;
+  border-radius: 4px;
+  background: white;
+  font-size: 12px;
+}
+
+.explorador-corpo {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+}
+
+.explorador-lateral {
+  width: 190px;
+  flex-shrink: 0;
+  padding: 12px 8px;
+  border-right: 1px solid #e3e3e3;
+  background: #fafafa;
+}
+
+.explorador-lateral p {
+  margin: 0;
+  padding: 9px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.explorador-lateral p:hover {
+  background: #e9e9e9;
+}
+
+.arquivos {
+  display: grid;
+  align-content: start;
+  flex: 1;
+  grid-template-columns: repeat(5, minmax(90px, 1fr));
+  gap: 12px;
+  padding: 24px;
+}
+
+.arquivo {
+  display: flex;
+  min-width: 0;
+  min-height: 105px;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 6px;
+  color: #222;
+  background: transparent;
+  cursor: default;
+}
+
+.arquivo:hover,
+.arquivo:focus {
+  border-color: #a8c7ed;
+  outline: 0;
+  background: #e7f1fc;
+}
+
+.arquivo > span:last-of-type {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 12px;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.arquivo small {
+  color: #b3261e;
+  font-size: 10px;
+}
+
+.icone-programa {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  place-items: center;
+  color: white;
+  background: #24262c;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.arquivo-bloqueado {
+  opacity: 0.8;
+}
+
+.atalho-desktop {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 88px;
+  min-height: 82px;
+  padding: 6px 4px;
+  border: 1px solid transparent;
+  color: white;
+  background: transparent;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  text-shadow: 1px 1px 3px black;
+  cursor: default;
+}
+
+.atalho-desktop:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.atalho-meu-amor {
+  top: 38%;
+  right: 13%;
+}
+
+.pasta-windows {
+  position: relative;
+  width: 47px;
+  height: 34px;
+  margin-bottom: 6px;
+  border-radius: 3px;
+  background: linear-gradient(#ffd75a, #e9a82c);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.pasta-windows::before {
+  position: absolute;
+  top: -7px;
+  left: 3px;
+  width: 21px;
+  height: 9px;
+  border-radius: 3px 3px 0 0;
+  content: "";
+  background: #f3bc36;
+}
+
+.nome-atalho {
+  line-height: 1.25;
+  text-align: center;
+}
+
+.relogio-desktop {
+  position: absolute;
+  right: 12px;
+  bottom: 5px;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 2px 7px;
+  color: white;
+  background: transparent;
+  font-size: 11px;
+  line-height: 1.25;
+  text-shadow: 1px 1px 3px black;
+}
